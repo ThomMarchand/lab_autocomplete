@@ -11,10 +11,8 @@ export default function Home() {
   // state for autocomplete
   const [cursorIndex, setCursorIndex] = useState<number>();
 
-  // const [onClickValue, setOnClickValue] = useState("");
   // console.log("inputValue state =>", inputValue);
   // console.log("suggestions state", suggestions);
-  // console.log("onClickValue state =>", onClickValue);
 
   const handleInputChange = (e: any) => {
     const { value, selectionStart } = e.target;

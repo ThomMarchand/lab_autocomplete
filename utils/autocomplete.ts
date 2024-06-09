@@ -33,15 +33,19 @@ export const autocomplete = ({
   if (onClickSelectedValue && onClickUserValue && indexCursor) {
     // console.log("indexCursor =>", indexCursor);
     // console.log("onClickSelected =>", onClickSelectedValue);
-    console.log("onClickValue =>", onClickUserValue);
+    // console.log("onClickValue =>", onClickUserValue);
 
     let oldValue = "";
     let newValue = "";
 
-    oldValue = onClickUserValue.substring(indexCursor - 2, indexCursor);
-    console.log(oldValue);
+    // oldValue = onClickUserValue.substring(indexCursor - 2, indexCursor);
+    // console.log(oldValue);
 
     const isMatch = stringIsMatch(onClickUserValue, indexCursor);
-    console.log(isMatch);
+    // console.log(isMatch);
+
+    if (isMatch) {
+      console.log("isMatch est true");
+    }
   }
 };
