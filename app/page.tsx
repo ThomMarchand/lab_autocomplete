@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { autocomplete } from "@/utils/autocomplete";
+import { changeMatchValue, showSugestions } from "@/utils/autocomplete";
 
 export default function Home() {
   const [inputValue, setInputValue] = useState("");
@@ -11,17 +11,14 @@ export default function Home() {
   // state for autocomplete
   const [cursorIndex, setCursorIndex] = useState<number>();
 
-  // console.log("inputValue state =>", inputValue);
+  console.log("inputValue state top lvl=>", inputValue);
   // console.log("suggestions state", suggestions);
 
   const handleInputChange = (e: any) => {
     const { value, selectionStart } = e.target;
 
     if (value) {
-      const sugestions = autocomplete({
-        userValue: value,
-        indexCursor: selectionStart,
-      });
+      const sugestions = showSugestions(value, selectionStart);
 
       if (sugestions && sugestions.length > 0) {
         setCursorIndex(selectionStart);
@@ -43,12 +40,12 @@ export default function Home() {
 
   const handleClick = (e: any) => {
     const { outerText } = e.target;
+    // console.log("outerText ds le handleClick =>", outerText);
+    console.log("inputValue ds le handleClick =>", inputValue);
 
-    autocomplete({
-      onClickUserValue: inputValue,
-      onClickSelectedValue: outerText,
-      indexCursor: cursorIndex,
-    });
+    if (cursorIndex) {
+      changeMatchValue(outerText, inputValue, cursorIndex);
+    }
   };
 
   const handleKeyDown = (e: any) => {
